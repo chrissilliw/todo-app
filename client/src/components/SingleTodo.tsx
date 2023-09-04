@@ -4,6 +4,7 @@ import { MdOutlineDone } from "react-icons/md";
 import Todolist from "./TodoList";
 import { useState } from "react";
 import "../app.scss";
+import { SingleTodoContainer, TodoIconWrapper, TodoIcon} from "./styled-components/styled-components";
 
 interface TodosProps {
     todo: ITodo;
@@ -37,7 +38,8 @@ const SingleTodo = ( {todo, todos, setTodos}: TodosProps ) => {
     };
 
   return (
-    <form className="todos_single" onSubmit={ (event)=> handleEdit(event, todo.id) }>
+    <SingleTodoContainer className="todos_single" onSubmit={ (event: React.FormEvent<HTMLFormElement>
+        )=> handleEdit(event, todo.id) }>
 
         { edit ? (
             <input value={editTodo} onChange={(event) => setEditTodo(event.target.value)} />
@@ -47,22 +49,22 @@ const SingleTodo = ( {todo, todos, setTodos}: TodosProps ) => {
             <span className="todos__single__text">{todo.todo}</span>
         )}
 
-        <div>
-            <span className="icon" onClick={ () => {
+        <TodoIconWrapper>
+            <TodoIcon className="icon" onClick={ () => {
                 if (!edit && !todo.isDone) {
                     setEdit(!edit);
                 }
             }}>
             <AiFillEdit />
-            </span>
-            <span className="icon" onClick={ () => handleDelete(todo.id)}>
+            </TodoIcon>
+            <TodoIcon className="icon" onClick={ () => handleDelete(todo.id)}>
             <AiFillDelete />
-            </span>
-            <span className="icon" onClick={ ()=> handleDone(todo.id)}>
+            </TodoIcon>
+            <TodoIcon className="icon" onClick={ ()=> handleDone(todo.id)}>
                 <MdOutlineDone />
-            </span>
-        </div>
-    </form>
+            </TodoIcon>
+        </TodoIconWrapper>
+    </SingleTodoContainer>
   );
 };
 

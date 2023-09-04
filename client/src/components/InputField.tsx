@@ -1,4 +1,6 @@
 import React from 'react'
+import { AddButton, GlobalStyle, TodoForm, TodoInput } from './styled-components/styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 interface InputFieldProps {
     todo: string;
@@ -9,18 +11,19 @@ interface InputFieldProps {
 const InputField = ( {todo, setTodo, handleAdd}: InputFieldProps ) => {
 
   return (
-    <form className="input" onSubmit={handleAdd}>
-        <input 
-            className="input_box"
+    <>
+    <GlobalStyle />
+    <TodoForm className="input" onSubmit={handleAdd}>
+        <TodoInput 
+            className={"input_box"}
             value={todo}
-            onChange= {
-                (e) => setTodo(e.target.value)
-            }
+            onChange= { (e) => setTodo(e.target.value) }
             placeholder="skriv här"
             type="text"
-             />
-             <button className="input_submit" type="submit">Lägg till </button>
-    </form>
+            />
+             <AddButton className="input_submit" type="submit">Lägg till </AddButton>
+    </TodoForm>
+    </>
   )
 }
 

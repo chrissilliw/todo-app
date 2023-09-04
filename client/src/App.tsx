@@ -2,6 +2,7 @@ import { useState } from 'react'
 import InputField from './components/InputField'
 import { ITodo } from './model/todo';
 import TodoList from './components/TodoList';
+import { Title, TodoWrapper } from "./components/styled-components/styled-components";
 
 const App = () => {
   const [todo, setTodo] = useState<string>("");
@@ -19,11 +20,16 @@ const App = () => {
   console.log(todos);
 
   return (
-    <div className="app">
-      <h1>Todo App</h1>
-      <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd}/>
-      <TodoList todos={todos} setTodos={setTodos} />
-    </div>
+    <>
+    
+      <TodoWrapper>
+        <div className="app">
+          <Title>Todo App</Title>
+          <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd}/>
+          <TodoList todos={todos} setTodos={setTodos} />
+        </div>
+      </TodoWrapper>
+    </>
   )
 }
 

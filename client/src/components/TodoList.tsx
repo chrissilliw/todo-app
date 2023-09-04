@@ -1,5 +1,7 @@
 import { ITodo } from "../model/todo";
 import SingleTodo from "./SingleTodo";
+import { TodoListContainer } from "./styled-components/styled-components";
+
 
 interface TodosProps {
     todos: ITodo[];
@@ -9,17 +11,19 @@ interface TodosProps {
 
 const Todolist = ( {todos, setTodos}: TodosProps ) => {
   return (
-    <div className="todos">
+    <TodoListContainer className="todos">
         {todos.map(todo=>(
+          // <SingleTodoStyled>
             <SingleTodo 
                 todo={todo} 
                 key={todo.id}
                 todos={todos}
                 setTodos={setTodos}
             />
+          // </SingleTodoStyled>
 
         ))}
-    </div>
+    </TodoListContainer>
   );
 }
 
