@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ITodo } from "../model/todo";
 import SingleTodo from "./SingleTodo";
 import { TodoListContainer } from "./styled-components/styled-components";
@@ -10,6 +11,7 @@ interface TodosProps {
 }
 
 const Todolist = ( {todos, setTodos}: TodosProps ) => {
+
   return (
     <TodoListContainer className="todos">
         {todos.map(todo=>(

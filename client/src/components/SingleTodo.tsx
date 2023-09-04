@@ -12,9 +12,11 @@ interface TodosProps {
     setTodos: React.Dispatch<React.SetStateAction<ITodo[]>>;
 }
 
+
 const SingleTodo = ( {todo, todos, setTodos}: TodosProps ) => {
     const [edit, setEdit] = useState<boolean>(false);
     const [editTodo, setEditTodo] = useState<string>(todo.todo);
+    const [isSelected, setIsSelected] = useState<boolean>(false);
 
     const handleDone = (id: number) => {
         setTodos(
@@ -30,6 +32,7 @@ const SingleTodo = ( {todo, todos, setTodos}: TodosProps ) => {
 
     const handleEdit = (event: React.FormEvent, id: number) => {
         event.preventDefault();
+        setIsSelected(!isSelected);
 
         setTodos(todos.map( (todo) => (
             todo.id === id ? {...todo, todo:editTodo} : todo
@@ -38,7 +41,7 @@ const SingleTodo = ( {todo, todos, setTodos}: TodosProps ) => {
     };
 
   return (
-    <SingleTodoContainer className="todos_single" onSubmit={ (event: React.FormEvent<HTMLFormElement>
+    <SingleTodoContainer selected={ isSelected } className="todos_single" onSubmit={ (event: React.FormEvent<HTMLFormElement>
         )=> handleEdit(event, todo.id) }>
 
         { edit ? (

@@ -2,17 +2,38 @@
     // background-color: green;
 
 .icon {
+    position: relative;
     width: 100%;
     height: auto;
     cursor: pointer;
 }
 
     &.crossed__out {
-        background: pink;
-        text-decoration: line-through;
+        position: relative;
+        width: auto;
         z-index: 1;
+
+        &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0%;
+            height: 3px;
+            background-color: #fff;
+            animation: line-through 250ms ease-in-out;
+            animation-fill-mode: forwards;
+        }
     }
 
-
+@keyframes line-through {
+    0% {
+        width: 0%
+    }
+    100% {
+        width: 100%;
+    }
+}
 
 }

@@ -1,11 +1,24 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, keyframes } from "styled-components";
+
+interface ISingleTodoContainer {
+    selected: boolean;
+}
+
+const fadeIn = keyframes`
+    from {
+        background-color: lightpink;
+    }
+    to {
+        background-color: purple;
+    }
+`
 
 export const GlobalStyle = createGlobalStyle`
     body{
         font-family: 'Roboto', sans-serif;
         margin: 0; 
         padding: 0;
-        background: lightgreen;
+        background: #f8f8f8;
     }
 `
 
@@ -19,7 +32,7 @@ export const TodoWrapper = styled.div`
 `
 
 export const Title = styled.h1`
-    color: red;
+    color: #000000;
     text-align: center;
 `
 
@@ -34,6 +47,7 @@ export const TodoInput = styled.input`
     padding: 13px 15px;
     border-radius: 6px;
     border: 1px solid transparent;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `
 
 export const AddButton = styled.button`
@@ -42,21 +56,25 @@ export const AddButton = styled.button`
     flex: 1;
     border-radius: 6px;
     border: 1px solid transparent;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `
 export const TodoListContainer = styled.div`
     margin: 30px auto;
-    width: 95%;
+    width: 100%;
     background: lightblue;
 `
 
-export const SingleTodoContainer = styled.form`
+export const SingleTodoContainer = styled.form<ISingleTodoContainer>`
     width: auto;
-    background: lightpink;
+    background: #05B1D0;
+    color: #f8f8f8;
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
     padding: 14px 25px;
-`
+    /* animation: ${fadeIn} 2s ease-in-out;
+    ${({ selected }) => selected && 'background: purple'} */
+`;
 
 export const TodoIconWrapper = styled.div`
     display: flex;
