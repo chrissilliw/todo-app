@@ -1,0 +1,18 @@
+.todos__single__text{
+    background-color: green;
+
+.icon {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+    &.crossed__out {
+        background: pink;
+        text-decoration: line-through;
+        z-index: 1;
+    }
+
+
+
+}
